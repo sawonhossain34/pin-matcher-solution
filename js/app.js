@@ -23,8 +23,9 @@ document.getElementById('generate-pin').addEventListener('click',function(){
 })
 
 document.getElementById('calculator').addEventListener('click',function(event){
-    const number = event.target.innerText;
-    const typedNumberField =document.getElementById('typed-numbers');
+    
+     const number = event.target.innerText;
+     const typedNumberField =document.getElementById('typed-numbers');
     const previousTypedNumber = typedNumberField.value;
 
     if(isNaN(number)){
@@ -40,5 +41,27 @@ document.getElementById('calculator').addEventListener('click',function(event){
     else{
         const newTypedNumber = previousTypedNumber + number;
         typedNumberField.value = newTypedNumber;
+    }
+})
+
+
+document.getElementById('verify-pin').addEventListener('click',function(){
+    const displayPinField = document.getElementById('display-pin');
+    const currentPin = displayPinField.value;
+
+    const typedNumberField = document.getElementById('typed-numbers');
+    const typedNumber = typedNumberField.value;
+
+    const succesElement = document.getElementById('succes');
+    const worngElement = document.getElementById('wrong');
+
+    if(typedNumber === currentPin){
+        succesElement.style.display= 'block';
+        worngElement.style.display = 'none';
+
+    }
+    else{
+        worngElement.style.display = 'block';
+        succesElement.style.display = 'none';
     }
 })
